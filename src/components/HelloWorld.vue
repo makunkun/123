@@ -1,4 +1,14 @@
 <script setup>
+import { ref, onMounted } from 'vue';
+
+const count = ref(0);
+onMounted(() => {
+  console.log('挂载成功啦！');
+})
+function handleClick() {
+  count.value++;
+}
+
 defineProps({
   msg: {
     type: String,
@@ -9,7 +19,7 @@ defineProps({
 
 <template>
   <div class="greetings">
-    <h1 class="green">{{ msg }}</h1>
+    <h1 class="green" @click="handleClick" style="cursor: pointer;">{{ msg }}{{ count }}</h1>
     <h3>
       You’ve successfully created a project with
       <a href="https://vitejs.dev/" target="_blank" rel="noopener">Vite</a> +
